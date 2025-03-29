@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>git hub test file</title>
+</head>
+<body>
+    <h1>Weather App test2</h1>
+    <h2 id="place"></h2>
+    <p>temp: <span class="temp"></span></p>
+    <p>wind: <span class="wind"></span></p>
+    <p>clouds: <span class="clouds"></span></p>
+
+    <script>
+        "use strict"
+        const api = "https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=6508da512d38ac3b48c59b0f9d469c21&units=metric";
+       let temp = document.querySelector(".temp"); 
+       let wind = document.querySelector(".wind"); 
+       let place = document.querySelector("#place"); 
+       let cloud = document.querySelector(".clouds"); 
+        
+       fetch(api)
+        .then(res => res.json())  
+        .then(data => {          
+            console.log(data);
+            temp.innerHTML = data.main.temp + "°C"; 
+            wind.innerHTML = data.wind.speed + "kmh"; 
+            place.innerHTML = data.name; 
+            cloud.innerHTML = data.weather[0].description;
+        });
+
+        
+    </script>
+</body>
+</html>
